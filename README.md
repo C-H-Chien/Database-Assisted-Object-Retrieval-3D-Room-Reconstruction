@@ -1,7 +1,7 @@
 # Database Assisted Object-Retrieval 3D Room Reconstruction
 This is Brown University CS2470 Deep Learning Final Project (Spring, 2022)
 
-![](https://ibb.co/V27WNvp)
+![](https://i.ibb.co/qktMnRF/model-architecture.png)
 
 ## Group Members:
 
