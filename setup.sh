@@ -1,6 +1,6 @@
 # conda environment
-conda create -n roca-decompose python=3.8
-conda activate roca-decompose
+conda create -n deepverse python=3.8
+conda activate deepverse
 
 # Simple deps
 pip install -r requirements.txt
