@@ -1,0 +1,8 @@
+1 horizontal
+2 large-cross-w-lots-of-books
+3 library-bookshelves
+4 short-cross-w-lots-of-books
+5 vertical-and-horizontal
+6 w-boxes
+7 wo-sides
+8 w-wardrobe
