@@ -1,0 +1,7 @@
+1 baby-bed
+2 beside-walls
+3 head-board-bed
+4 horizontal-bed
+5 no-head-board-bed
+6 top-bed-bottom-desk
+7 top-bed-cabinet-bottom
