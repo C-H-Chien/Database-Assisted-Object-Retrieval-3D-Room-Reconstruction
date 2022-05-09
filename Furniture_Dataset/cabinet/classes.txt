@@ -1,0 +1,5 @@
+1 double-small
+2 long-short
+3 single-bedside
+4 two-door-medium
+5 wardrobe
