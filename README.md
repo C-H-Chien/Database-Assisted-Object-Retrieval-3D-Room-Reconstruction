@@ -1,9 +1,11 @@
 # Database Assisted Object-Retrieval 3D Room Reconstruction
 This is Brown University CS2470 Deep Learning Final Project (Spring, 2022)
 
-![](https://i.ibb.co/nnYpjfT/Screenshot-from-2022-05-09-16-09-17.png)
+![](https://ibb.co/XsqvBR4"><img src="https://i.ibb.co/Z80ksDJ/model-details.png)
 
-## Group Members:
+Please see the [shared google document](https://docs.google.com/document/d/1cgpK6DUBmHsnukGxdAgwXK5HO8d8HZpYLwIFgFSSTxM/edit) for more details of this project.
+
+## Group Members (Name, cslogin):
 
 Chiang-Heng Chien (cchien3)
 
