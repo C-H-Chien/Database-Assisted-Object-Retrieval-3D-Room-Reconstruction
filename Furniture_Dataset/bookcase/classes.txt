@@ -1,8 +1,8 @@
-1 horizontal
-2 large-cross-w-lots-of-books
-3 library-bookshelves
-4 short-cross-w-lots-of-books
-5 vertical-and-horizontal
-6 w-boxes
-7 wo-sides
-8 w-wardrobe
+1 586356e8809b6a678d44b95ca8abc7b2
+2 46579c6050cac50a1c8c7b57a94dbb2e
+3 3c9f48785776ee8efcd4910413c446d9
+4 4e26a2e39e3b6d39961b70a6f96df2a4
+5 e7e3aacb7ef4ef00f11caac3db6956bf
+6 1b3090bfb11cf834f06824a9291300d4
+7 131b5b691ff5bff3945770bff82992ca
+8 33b29c9e55250cc57f0bdbbc607f1f0e

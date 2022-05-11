@@ -1,7 +1,7 @@
-1 baby-bed
-2 beside-walls
-3 head-board-bed
-4 horizontal-bed
-5 no-head-board-bed
-6 top-bed-bottom-desk
-7 top-bed-cabinet-bottom
+1 30eb0a2f835b91b19e9c6b0794a3b4d8
+2 c9eb8864f33152a3e09520ec2bf55884
+3 af2e51ff34f1084564dabb9b8161e0a7
+4 edf13191dacf07af42d7295fb0533ac0
+5 9c203361eac308754b8a0e1f781de28e
+6 1f11b3d9953fabcf8b4396b18c85cf0f
+7 6284bce6e6fe15c8aa69dfdc5532bb13

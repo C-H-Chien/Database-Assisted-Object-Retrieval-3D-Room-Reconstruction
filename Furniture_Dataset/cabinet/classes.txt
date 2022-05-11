@@ -1,5 +1,5 @@
-1 double-small
-2 long-short
-3 single-bedside
-4 two-door-medium
-5 wardrobe
+1 ​​dca4c8bdab8bdfe739e1d6694e046e01
+2 b278c93f18480b362ea98d69e91ba870
+3 10c484963692d3c87d40405e5ee68b4f
+4 b7dc1e9a3949991747d7c2aae1e5c61
+5 1b32d878eeb305e45588a2543ef0b0b4
