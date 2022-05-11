@@ -164,6 +164,8 @@ class Predictor:
                 faces=mesh.faces_list()[0].numpy()
             )
 
+            # -- [DEFINE OBJECT POSE 1] user-defined object pose: translation, rotation, scale --
+            '''
             obj_eul_angles = [0.1, 0.2, 0.3]
             trs = mesh_transform(
                 instances.pred_translations[i].tolist(),
@@ -171,6 +173,19 @@ class Predictor:
                 #instances.pred_rotations[i].tolist(),
                 instances.pred_scales[i].tolist()
             )
+            '''
+
+            # -- [DEFINE OBJECT POSE 2] get pose estimated by ROCA: translation, rotation, scale --
+            translation = instances.pred_translations[i].tolist()
+            
+            trs = make_M_from_tqs(
+                #instances.pred_translations[i].tolist(),
+                translation,
+                instances.pred_rotations[i].tolist(),
+                instances.pred_scales[i].tolist()
+            )
+
+            # -- apply the object pose to the 3D CAD models in the scene --
             mesh.apply_transform(self.scene_rot @ trs)
             
 

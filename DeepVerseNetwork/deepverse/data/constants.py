@@ -2,7 +2,7 @@ import numpy as np
 
 # -- selected predefined 3D objects --
 BENCHMARK_CLASSES = (
-    'bathtub',
+    'bathtub',  # -- DUMMY... REDUNDANT...
     'bin',
     'bookcase',
     'chair',
@@ -12,7 +12,7 @@ BENCHMARK_CLASSES = (
     'table',
 )
 ALL_CLASSES = (
-    'bathtub',
+    'bathtub',  # -- DUMMY... REDUNDANT...
     'bed',
     'bin',
     'bookcase',

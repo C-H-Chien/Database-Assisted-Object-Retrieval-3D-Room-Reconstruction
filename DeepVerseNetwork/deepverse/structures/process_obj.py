@@ -26,29 +26,39 @@ class ProcessObj():
         self.obj_boxes = self.instances.pred_boxes.tensor.numpy()
         self.obj_masks = self.instances.pred_masks
 
-    def mask_rcnn_output_processing(self, save_obj_img = False):
-        print("================================")
+    def mask_rcnn_output_processing(self, obj_idx, save_obj_img = False):
+        #print("================================")
         save_idx = 0
         # -- loop over all objects in the image --
-        for obj_idx in range(len(self.instances)):
-            # -- fetch data of each object --
-            obj_class_label = self.obj_classes[obj_idx]
-            obj_box = self.obj_boxes[obj_idx]
-            obj_mask_bool = self.obj_masks[obj_idx].type(torch.uint8).numpy()
-            extract_obj_img = self.img*obj_mask_bool[:,:,None]
-            extract_obj_img = np.where(extract_obj_img.any(-1,keepdims=True), extract_obj_img, 255)
+        #for obj_idx in range(len(self.instances)):
+        
+        # -- fetch data of each object --
+        obj_class_label = self.obj_classes[obj_idx]
+        obj_box = self.obj_boxes[obj_idx]
+        '''
+        obj_mask_bool = self.obj_masks[obj_idx].type(torch.uint8).numpy()
+        extract_obj_img = self.img*obj_mask_bool[:,:,None]
+        extract_obj_img = np.where(extract_obj_img.any(-1,keepdims=True), extract_obj_img, 255)
 
-            pil_img = Image.fromarray(extract_obj_img, 'RGB')
-            cropped_img = ProcessObj.crop_object(pil_img, obj_box)
-            cropped_img = cropped_img.resize((256, 256), Image.ANTIALIAS)
+        pil_img = Image.fromarray(extract_obj_img, 'RGB')
+        cropped_img = ProcessObj.crop_object(pil_img, obj_box)
+        cropped_img = cropped_img.resize((256, 256), Image.ANTIALIAS)
+        '''
+        # -- fetch data of each object --
+        pil_img = Image.fromarray(self.img, 'RGB')
+        cropped_img = ProcessObj.crop_object(pil_img, obj_box)
+        cropped_img = cropped_img.resize((256, 256), Image.ANTIALIAS)
+        
 
-            #print(obj_class_label)
-            #print(obj_box)
-            if save_obj_img:
-                #cropped_img.show()
-                filename = self.img_name + '_' + str(obj_class_label) + '_' + str(save_idx)
-                ProcessObj.save_obj_crop_img(cropped_img, filename)
-                save_idx += 1
+        #print(obj_class_label)
+        #print(obj_box)
+        if save_obj_img:
+            #cropped_img.show()
+            filename = self.img_name + '_' + str(obj_class_label) + '_' + str(save_idx)
+            ProcessObj.save_obj_crop_img(cropped_img, filename)
+            save_idx += 1
+        
+        return cropped_img
 
     def crop_object(image, box):
         # -- crop an object in an image using detectron2 pred_boxes --

@@ -14,6 +14,7 @@ import torchvision
 from deepverse.engine import Predictor
 from deepverse.structures import ProcessObj
 from skimage.transform import resize
+from deepverse.FGVC import FGVC_net_forward
 
 
 def main(args):
@@ -27,8 +28,10 @@ def main(args):
     for name, scene in zip(
         #('3m', 'sofa', 'lab', 'desk'),
         #('scene0474_02', 'scene0207_00', 'scene0378_02', 'scene0474_02')
-        ('3m', 'sofa'),
-        ('scene0474_02', 'scene0207_00')
+        #('sofa2', 'sofa'),
+        #('scene0423_01', 'scene0207_00')
+        ('3m', 'desk'),
+        ('scene0474_02', 'scene0474_02')
     ):
         
         # -- 1) read image and scene, feed to MaskRCNN, and get instances and annotated cad_ids back --
@@ -36,41 +39,43 @@ def main(args):
         
         img = Image.open(os.path.join('assets', '{}.jpg'.format(name)))
         img = np.asarray(img)
-        instances, cad_ids = predictor(img, scene=scene)
+        #instances, cad_ids = predictor(img, scene=scene)
+        instances, _ = predictor(img, scene=scene)
 
         # -- 1-1) process output of MaskRCNN for the preparation of 3d coarse reconstruction block --
-        #print(instances, cad_ids)
-        print(cad_ids)
+        #print(instances, cad_ids)        
         proccessor = ProcessObj(name, img, instances)
-        proccessor.mask_rcnn_output_processing(save_obj_img = True)
+        # -- loop over all 2d objects --
+        CAD_objects = []
+        for obj_idx in range(len(instances)):
+            cropped_obj_img = proccessor.mask_rcnn_output_processing(obj_idx)
 
-        """
-        print(cad_ids[0][1])
-        cad_ids_list = list(cad_ids[0])
-        cad_ids_list[1] = 'a97bd9998d12467d7275456565149f4f'
-        cad_ids[0] = tuple(cad_ids_list)
-        """
+            #if name == 'books':
+            #    cad_ids_list = list(cad_ids[0])
+            #    cad_ids_list[1] = '9368cd9028151e1e9d51a07a5989d077'
+            #    cad_ids[0] = tuple(cad_ids_list)
 
-        #print("=========================================")
-        #print(instances.pred_rotations[0].tolist())
+            # -- ignore the dummy furniture --
+            if int(instances.pred_classes[obj_idx]) == 0:
+                continue
 
-        # -- 2) build coarse 3D reconstruction --
-
-        # -- 3) embed the 3D object reconstuction --
-
-        """
-        # -- 4) retrieve corresponding 3D object mesh from database --
+            # -- 2) do fine-grained classification to predict the cad_ids --
+            cad_class, cad_id = FGVC_net_forward(cropped_obj_img, int(instances.pred_classes[obj_idx]))
+            CAD_objects.append((cad_class, cad_id))
+            
+        
+        # -- 3) retrieve corresponding 3D object mesh from database based on CAD IDs --
         meshes = predictor.retrieve_obj_mesh(
             instances,
-            cad_ids,
+            #cad_ids,
+            CAD_objects,
             excluded_classes= ()
         )
 
-        # -- 5) visualize the result --
+        # -- 4) visualize the result --
         o3d.visualization.draw_geometries(meshes)
-        """
         
-
+    
 
 if __name__ == '__main__':
 
