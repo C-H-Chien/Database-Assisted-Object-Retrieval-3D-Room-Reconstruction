@@ -34,7 +34,7 @@ SYMMETRY_ID_CLASSES = {v: k for k, v in SYMMETRY_CLASS_IDS.items()}
 # -- constant class labels associated to ShapeNetCore dataset --
 CAD_TAXONOMY = {
     2747177: 'bin',
-    2808440: 'bathtub',
+    2808440: 'bathtub', # -- DUMMY... REDUNDANT...
     2818832: 'bed',
     2871439: 'bookcase',
     2933112: 'cabinet',
@@ -53,12 +53,12 @@ VOXEL_RES = (32, 32, 32)
 # -- predefined colors of 3D furniture objects --
 COLOR_BY_CLASS = {
     2747177: np.array([210, 43, 16]) / 255,
-    2808440: np.array([176, 71, 241]) / 255,
+    2808440: np.array([237, 129, 241]) / 255,   # -- DUMMY... REDUNDANT...
     2818832: np.array([204, 204, 255]) / 255,
-    2871439: np.array([255, 191, 0]) / 255,
+    2871439: np.array([237, 129, 241]) / 255,
     2933112: np.array([255, 127, 80]) / 255,
     3001627: np.array([44, 131, 242]) / 255,
     3211117: np.array([212, 172, 23]) / 255,
-    4256520: np.array([237, 129, 241]) / 255,
+    4256520: np.array([176, 71, 241]) / 255,
     4379243: np.array([32, 195, 182]) / 255
 }
